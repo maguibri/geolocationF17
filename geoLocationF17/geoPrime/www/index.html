@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Geo Prime</title>
+
+	<meta name="viewport" 
+		  content="width=device-width, user-scalable=no, 
+		  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<!-- This is a secure content policy -->
+	<meta http-equiv="Content-Security-Policy" 
+		  content="
+		  			default-src 
+		  						'self' 
+		  						gap://ready 
+		  						'unsafe-inline'; 
+		           	style-src   
+		           				'self' 
+		           				https://*.googleapis.com 
+		           				'unsafe-inline'; 
+		           	script-src  
+		           				'self' 
+		  						https://*.googleapis.com 
+		           				'unsafe-inline'; 
+		           	img-src
+		           				'self'
+		           				https://*.gstatic.com
+		           				https://*.googleapis.com 
+		           				'unsafe-inline';
+		           	font-src
+		           				'self'
+		           				https://*.gstatic.com;"
+	/>
+
+    <!-- NOTICE: ADDED googleapis and gstatic URL to Content Security Policy -->
+    <!-- https://developers.google.com/web/fundamentals/security/csp/		 -->
+    <!-- https://content-security-policy.com/                                -->
+    <!-- for PhoneGap/Cordova, see whitelist info in config.xml 			 -->
+
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+</head>
+<body> <!-- no onload - see index.js for "ondeviceready" event listener -->
+
+    <div id="header">
+        <input  id="latitudeId" type="number" step="any" 
+                value="0" min="-90.00" max="+90.00" required>    
+        <input  id="longitudeId" type="number" step="any" 
+                value="0" min="-180.00" max="+180.00" required>    
+
+        <button id="mapGeoButtonId">Map</button>
+    </div>
+     <div id="mapDiv"></div>
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>

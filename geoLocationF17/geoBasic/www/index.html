@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Geolocation Test</title>
+
+	<meta name="viewport" 
+		  content="width=device-width, user-scalable=no, 
+		  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<!-- This is not a secure content policy, should be locked down for prod -->
+	<meta http-equiv="Content-Security-Policy" 
+		  content="default-src 'self' gap://ready; 
+		           style-src   'self' 'unsafe-inline'; 
+		           script-src  'self' 'unsafe-inline' 'unsafe-eval';">
+
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+</head>
+<body> <!-- no onload - see index.js for "ondeviceready" event listener -->
+
+<body>
+
+	<h1>Geolocation Plugin</h1>
+	
+    <button id="startButtonId">Start</button>
+    <button id="stopButtonId">Stop</button>
+    <br>
+    <h3>Latitude:    <span id="latitudeId">    </span></h3>
+    <h3>Longitude:   <span id="longitudeId">   </span></h3>
+    <h3>Accuracy(m): <span id="accuracyId">    </span></h3>
+    <br>
+    <h3>Altitude(m): <span id="altitudeId">    </span></h3>
+    <h3>Accuracy(m): <span id="altAccuracyId"> </span></h3>
+    <br>
+    <h3>Heading:     <span id="headingId">     </span></h3>
+    <h3>Speed(m/s):  <span id="speedId">       </span></h3>
+    <h3>Time:        <span id="timestampId">   </span></h3>
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 
+		A simple web app to show WPC Tempe on a google map
+		See the following links for good tutorials on the google map api
+
+		www.elegantthemes.com/blog/tips-tricks/google-maps-api-key
+	developers.google.com/maps/documentation/javascript/adding-a-google-map
+	
+			DONT USE MY Google API KEY, GET YOUR OWN KEY
+	 -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, 
+			initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	
+	<meta http-equiv="Content-Security-Policy" 
+		content="default-src 'self' data: gap: 'unsafe-inline' 
+					https://*.gstatic.com 
+					https://*.phonegap.com
+					https://*.googleapis.com; 
+				style-src 'self' 'unsafe-inline'
+					https://fonts.googleapis.com; 
+				script-src  'self' 'unsafe-inline' 'unsafe-eval' 
+					https://*.phonegap.com 
+					https://*.googleapis.com;
+				media-src *" />	
+	<title>GMap Web App F17</title>
+	<style>
+
+		/* we are responsive - set your box-sizing and margin! */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		/*----------------------------------------------------------------------
+		|	Google maps take up the height of their container. Contrary to
+		|	what most folks think, containers take up no space unless you put 
+		|	something in it that takes space, or, you specify the size with
+		|	by hand like: width: 350px; height: 300px; Responsive sites need
+		|	to be more general. Here we proportion the amount of height
+		|	1) Tell the <html> and <body> to take up 100% of viewport height, 
+		|	   by default they are zero pixels tall
+		|	2) Split the header and map to proportions that add up to 100%
+		|	Of course, you can make many divs, just add up heights to 100% 
+		|
+		| if you try your own hand at this, and have no console errors and do
+		| not see your map, see the height of your map div, I bet it is zero! 
+		----------------------------------------------------------------------*/
+
+		html, body 	{ height: 100vh; } 	/* 100% of Viewport Height 		 	*/
+		#header 	{ height:  10vh; } 	/* header gets some height       	*/
+		#mapDiv 	{ height:  90vh; }  /* map gets some height          	*/
+
+		/* styles to make it look nice, not required for functionality   	*/
+		#header 	{ background-color: black; }
+
+		h1 {
+			text-align:  	center;		/* centered left-right 				*/
+			color: 			white;		/* white font color                 */
+			font-family: 	sans-serif;	/* modern look                      */
+			font-size: 		8vh; 		/* 8% Vertical Height responsive! 	*/
+										/* font will take up 8%, 1% pad top */
+										/* since container is 10%           */
+		}
+	</style>
+
+	<script>
+		function initMap() {
+			var mapElement 		= document.getElementById('mapDiv');
+			
+			var geoLocationASU 	= {lat: 33.4166317, lng: -111.9341069};
+			var mapOptions 		= {zoom: 18, center: geoLocationASU};
+
+			var mapper = new google.maps.Map(mapElement, mapOptions);
+
+			var markerOptions 	= {position: geoLocationASU, map: mapper};
+			var marker = new google.maps.Marker(markerOptions);
+		}
+	</script>
+
+</head>
+<body>
+	<div id="header"><h1>WPC Map</h1></div>
+
+	<div id="mapDiv"></div> <!-- google map will fill this div -->
+
+	<!-- Note: we must call the javascript api  -->
+	<script async defer	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH7e1P_eSIAOa_Q2bNVJJwj1bV43cmsyY&callback=initMap">
+	</script>
+
+	<!-- 
+		async: this might take a while to load, keep working on loading the DOM
+		defer: dont run the script until the DOM is loaded
+		src: the url and options
+			https://maps.googleapis.com/maps/api/js - what to load
+			?key=AIzaSyAH7e1P_eSIAOa_Q2bNVJJwj1bV43cmsyY - my entitlement
+				(get your own key, see tutorials at top to get your own key)
+			&callback=initMap - once loaded, entitled, and ran, call initMap()
+	 -->
+
+</body>
+</html>

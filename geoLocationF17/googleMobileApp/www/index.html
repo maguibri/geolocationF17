@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Google Maps Mobile</title>
+
+	<meta name="viewport" 
+		  content="width=device-width, user-scalable=no, 
+		  initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<!-- This is not a secure content policy, should be locked down for prod -->
+	<meta http-equiv="Content-Security-Policy" 
+		  content="
+		  			default-src 
+		  						'self' 
+		  						gap://ready 
+		  						'unsafe-inline'; 
+		           	style-src   
+		           				'self' 
+		           				https://*.googleapis.com 
+		           				'unsafe-inline'; 
+		           	script-src  
+		           				'self' 
+		  						https://*.googleapis.com 
+		           				'unsafe-inline'; 
+		           	img-src
+		           				'self'
+		           				https://*.gstatic.com
+		           				https://*.googleapis.com 
+		           				'unsafe-inline';
+		           	font-src
+		           				'self'
+		           				https://*.gstatic.com;"
+	/>
+
+    <!-- NOTICE: ADDED googleapis and gstatic URL to Content Security Policy -->
+    <!-- https://developers.google.com/web/fundamentals/security/csp/		 -->
+    <!-- https://content-security-policy.com/                                -->
+    <!-- for PhoneGap/Cordova, see whitelist info in config.xml 			 -->
+
+		           
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+</head>
+<body> <!-- no onload - see index.js for "ondeviceready" event listener -->
+
+    <div id="header"><h1>WPC Map</h1></div>
+
+    <div id="mapDiv"></div> <!-- this div is where the google map will go -->
+
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+
+</body>
+</html>
